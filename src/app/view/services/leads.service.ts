@@ -43,7 +43,7 @@ export class LeadsService {
 
   markAsDuplicate(leadId: string, duplicateIds: string[]): Observable<void> {
     return this.http
-      .put<void>(`${environment.baseUrl}/leads/${leadId}`, { duplicate_of: duplicateIds[0] })
+      .put<void>(`${environment.baseUrl}/leads/${leadId}`, duplicateIds)
       .pipe(
         retry(3),
         catchError(this.handleError)
